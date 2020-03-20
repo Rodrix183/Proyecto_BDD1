@@ -1,6 +1,7 @@
 package proyectobdd1;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 public class Main extends javax.swing.JFrame {
 
@@ -23,13 +24,16 @@ public class Main extends javax.swing.JFrame {
         label6 = new java.awt.Label();
         label7 = new java.awt.Label();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnReg = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         lbl_Verif = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        tipoUser1 = new javax.swing.JRadioButton();
+        tipoUser2 = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
+        tipoUser3 = new javax.swing.JRadioButton();
+        tipoUser4 = new javax.swing.JRadioButton();
         jTextField2 = new javax.swing.JTextField();
+        btnUsers = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         lbl_signup = new java.awt.Label();
         btn_login = new java.awt.Button();
@@ -73,7 +77,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Registrarse");
+        btnReg.setText("Registrarse");
+        btnReg.setEnabled(false);
+        btnReg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Volver");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -86,13 +96,21 @@ public class Main extends javax.swing.JFrame {
         lbl_Verif.setForeground(new java.awt.Color(255, 255, 255));
         lbl_Verif.setText("X");
 
-        jRadioButton1.setText("Admin");
+        btnUsers.add(tipoUser1);
+        tipoUser1.setText("Admin");
 
-        jRadioButton2.setText("Servicio de Localización de Vehículos");
+        btnUsers.add(tipoUser2);
+        tipoUser2.setText("Servicio de Localización de Vehículos");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 255));
         jLabel1.setText("Registrar Como:");
+
+        btnUsers.add(tipoUser3);
+        tipoUser3.setText("Cliente");
+
+        btnUsers.add(tipoUser4);
+        tipoUser4.setText("Depto. Marketing");
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
@@ -102,7 +120,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btnReg)
                 .addGap(195, 195, 195))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -128,8 +146,10 @@ public class Main extends javax.swing.JFrame {
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(panel1Layout.createSequentialGroup()
                                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton2)
-                                    .addComponent(jRadioButton1))
+                                    .addComponent(tipoUser2)
+                                    .addComponent(tipoUser1)
+                                    .addComponent(tipoUser3)
+                                    .addComponent(tipoUser4))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
@@ -160,12 +180,16 @@ public class Main extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton1)
+                .addComponent(tipoUser1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addComponent(tipoUser2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tipoUser3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tipoUser4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(btnReg)
                     .addComponent(jButton3))
                 .addGap(44, 44, 44))
         );
@@ -247,12 +271,21 @@ public class Main extends javax.swing.JFrame {
             //Si es correcta la password
             lbl_Verif.setText("✓");
             lbl_Verif.setBackground(Color.green);
-            
+            verificacionPass = true;
+            btnReg.setEnabled(true);
         }else{
             lbl_Verif.setText("X");
             lbl_Verif.setBackground(Color.red);
+            verificacionPass = false;
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
+        if (verificacionPass == false  || (tf_regPass1.getText().length() <= 0) || (tf_regPass2.getText().length() <= 0) || (tf_regUser.getText().length() <= 0)) {
+            JOptionPane.showMessageDialog(null, "No se ha podido registrar!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        btnReg.setEnabled(false);
+    }//GEN-LAST:event_btnRegActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -287,15 +320,14 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnReg;
+    private javax.swing.ButtonGroup btnUsers;
     private java.awt.Button btn_login;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField jTextField2;
     private java.awt.Label label1;
     private java.awt.Label label2;
@@ -312,5 +344,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField tf_regPass1;
     private javax.swing.JTextField tf_regPass2;
     private javax.swing.JTextField tf_regUser;
+    private javax.swing.JRadioButton tipoUser1;
+    private javax.swing.JRadioButton tipoUser2;
+    private javax.swing.JRadioButton tipoUser3;
+    private javax.swing.JRadioButton tipoUser4;
     // End of variables declaration//GEN-END:variables
+boolean verificacionPass = false;
 }
