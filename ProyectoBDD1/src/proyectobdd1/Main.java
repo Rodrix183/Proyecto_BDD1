@@ -34,6 +34,10 @@ public class Main extends javax.swing.JFrame {
         tipoUser4 = new javax.swing.JRadioButton();
         jTextField2 = new javax.swing.JTextField();
         btnUsers = new javax.swing.ButtonGroup();
+        menu_admin = new javax.swing.JDialog();
+        menu_localizacionV = new javax.swing.JDialog();
+        menu_cliente = new javax.swing.JDialog();
+        menu_mkt = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         lbl_signup = new java.awt.Label();
         btn_login = new java.awt.Button();
@@ -207,6 +211,50 @@ public class Main extends javax.swing.JFrame {
 
         jTextField2.setText("jTextField1");
 
+        javax.swing.GroupLayout menu_adminLayout = new javax.swing.GroupLayout(menu_admin.getContentPane());
+        menu_admin.getContentPane().setLayout(menu_adminLayout);
+        menu_adminLayout.setHorizontalGroup(
+            menu_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        menu_adminLayout.setVerticalGroup(
+            menu_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout menu_localizacionVLayout = new javax.swing.GroupLayout(menu_localizacionV.getContentPane());
+        menu_localizacionV.getContentPane().setLayout(menu_localizacionVLayout);
+        menu_localizacionVLayout.setHorizontalGroup(
+            menu_localizacionVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        menu_localizacionVLayout.setVerticalGroup(
+            menu_localizacionVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout menu_clienteLayout = new javax.swing.GroupLayout(menu_cliente.getContentPane());
+        menu_cliente.getContentPane().setLayout(menu_clienteLayout);
+        menu_clienteLayout.setHorizontalGroup(
+            menu_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        menu_clienteLayout.setVerticalGroup(
+            menu_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout menu_mktLayout = new javax.swing.GroupLayout(menu_mkt.getContentPane());
+        menu_mkt.getContentPane().setLayout(menu_mktLayout);
+        menu_mktLayout.setHorizontalGroup(
+            menu_mktLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        menu_mktLayout.setVerticalGroup(
+            menu_mktLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -338,6 +386,10 @@ public class Main extends javax.swing.JFrame {
     private java.awt.Label label7;
     private javax.swing.JTextField lbl_Verif;
     private java.awt.Label lbl_signup;
+    private javax.swing.JDialog menu_admin;
+    private javax.swing.JDialog menu_cliente;
+    private javax.swing.JDialog menu_localizacionV;
+    private javax.swing.JDialog menu_mkt;
     private javax.swing.JDialog menu_reg;
     private java.awt.Panel panel1;
     private java.awt.TextField textField1;
