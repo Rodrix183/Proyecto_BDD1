@@ -2,6 +2,7 @@ package proyectobdd1;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class Main extends javax.swing.JFrame {
 
@@ -39,7 +40,12 @@ public class Main extends javax.swing.JFrame {
         menu_localizacionV = new javax.swing.JDialog();
         menu_cliente = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        opcionesCliente = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnVolver_Cliente = new java.awt.Button();
+        label8 = new java.awt.Label();
+        lbl_Welcome = new java.awt.Label();
         menu_mkt = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         lbl_signup = new java.awt.Label();
@@ -250,25 +256,87 @@ public class Main extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(51, 0, 51));
         jPanel2.setForeground(new java.awt.Color(51, 0, 51));
 
-        jComboBox1.setBackground(new java.awt.Color(51, 0, 51));
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Distribuidores", "Productos", "Inventarios", "Precios" }));
+        opcionesCliente.setBackground(new java.awt.Color(51, 0, 51));
+        opcionesCliente.setForeground(new java.awt.Color(255, 255, 255));
+        opcionesCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Distribuidores", "Productos", "Inventarios", "Precios" }));
+        opcionesCliente.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                opcionesClienteItemStateChanged(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Nombre"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        btnVolver_Cliente.setLabel("Volver");
+        btnVolver_Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolver_ClienteActionPerformed(evt);
+            }
+        });
+
+        label8.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
+        label8.setForeground(new java.awt.Color(153, 204, 255));
+        label8.setText("Bienvenid@!");
+
+        lbl_Welcome.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
+        lbl_Welcome.setForeground(new java.awt.Color(153, 204, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(353, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(172, 172, 172)
+                        .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(lbl_Welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnVolver_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(opcionesCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(393, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_Welcome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(67, 67, 67)
+                .addComponent(opcionesCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addComponent(btnVolver_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70))
         );
 
         javax.swing.GroupLayout menu_clienteLayout = new javax.swing.GroupLayout(menu_cliente.getContentPane());
@@ -386,11 +454,26 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegActionPerformed
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+        this.dispose();
+
         //menu cliente
         menu_cliente.pack();
         menu_cliente.setLocationRelativeTo(this);
         menu_cliente.setVisible(true);
     }//GEN-LAST:event_btn_loginActionPerformed
+
+    private void btnVolver_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolver_ClienteActionPerformed
+        menu_cliente.dispose();
+        this.setVisible(true);
+    }//GEN-LAST:event_btnVolver_ClienteActionPerformed
+
+    private void opcionesClienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_opcionesClienteItemStateChanged
+        //cambio de opciones combo box
+        DefaultTableModel modelo = new DefaultTableModel();
+//        if () {
+//            
+//        }
+    }//GEN-LAST:event_opcionesClienteItemStateChanged
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -420,23 +503,25 @@ public class Main extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Main().setVisible(true);
-            }
+            } 
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReg;
     private javax.swing.ButtonGroup btnUsers;
+    private java.awt.Button btnVolver_Cliente;
     private java.awt.Button btn_login;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private java.awt.Label label1;
     private java.awt.Label label2;
@@ -445,13 +530,16 @@ public class Main extends javax.swing.JFrame {
     private java.awt.Label label5;
     private java.awt.Label label6;
     private java.awt.Label label7;
+    private java.awt.Label label8;
     private javax.swing.JTextField lbl_Verif;
+    private java.awt.Label lbl_Welcome;
     private java.awt.Label lbl_signup;
     private javax.swing.JDialog menu_admin;
     private javax.swing.JDialog menu_cliente;
     private javax.swing.JDialog menu_localizacionV;
     private javax.swing.JDialog menu_mkt;
     private javax.swing.JDialog menu_reg;
+    private javax.swing.JComboBox<String> opcionesCliente;
     private java.awt.Panel panel1;
     private java.awt.TextField textField1;
     private javax.swing.JTextField tf_regPass1;
